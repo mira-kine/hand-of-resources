@@ -65,6 +65,6 @@ describe('hand-of-resources routes', () => {
       artist: 'Tame Impala',
     });
     const res = await request(app).delete(`/api/v1/deepsea/${song.id}`);
-    expect(res.body).toEqual(song);
+    expect(res.body).toBeNull();
   });
 });
