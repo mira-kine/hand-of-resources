@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Animes = require('../lib/models/Animes');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -23,17 +24,17 @@ describe('hand-of-resources routes', () => {
   });
 
   it.only('should get all the anime', async () => {
-    const anime1 = await {
+    const anime1 = await Animes.createAnime({
       name: 'Naruto',
       favorite_character: 'Sasuke',
       year: '2002',
-    };
-    const anime2 = await {
+    });
+    const anime2 = await Animes.createAnime({
       name: 'One Piece',
       favorite_character: 'Chopper',
       year: '1999',
-    };
+    });
+    const res = await request(app).get('/api/v1/animes');
+    expect(res.body).toEqual(expect.arrayContaining([anime1, anime2]));
   });
-  const res = await request(app).get('/api/v1/animes');
-  expect(res.body).toEqual(expect.arrayContaining([anime1, anime2]));
 });
