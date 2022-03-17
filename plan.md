@@ -7,7 +7,7 @@
 ## controllers
 
 - [x] songs
-- [ ] animes
+- [x] animes
 - [ ] books
 - [ ] mookies
 - [ ] japanese foods
@@ -21,7 +21,17 @@
   - [x] UPDATE BY ID
   - [x] DELETE BY ID
 - [ ] animes
+  - [ ] CREATE
+  - [ ] GET ALL
+  - [ ] GET BY ID
+  - [ ] UPDATE BY ID
+  - [ ] DELETE BY ID
 - [ ] books
+  - [ ] CREATE
+  - [ ] GET ALL
+  - [ ] GET BY ID
+  - [ ] UPDATE BY ID
+  - [ ] DELETE BY ID
 - [ ] mookies
 - [ ] japanese foods
 
