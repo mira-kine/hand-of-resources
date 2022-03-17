@@ -48,7 +48,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it.only('should delete song by id', async () => {
+  it('should delete song by id', async () => {
     const song = await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',

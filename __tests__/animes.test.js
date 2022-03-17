@@ -11,11 +11,12 @@ describe('hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
-  it('should create anime', async () => {
+
+  it.only('should create anime', async () => {
     const expected = {
       name: 'Naruto',
       favorite_character: 'Sasuke',
-      year: 2002,
+      year: '2002',
     };
     const res = await request(app).post('/api/v1/animes').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });

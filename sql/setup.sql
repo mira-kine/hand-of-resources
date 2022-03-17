@@ -8,3 +8,12 @@ CREATE TABLE songs (
     name TEXT NOT NULL,
     artist TEXT NOT NULL
 );
+
+DROP TABLE IF EXISTS animes;
+
+CREATE TABLE animes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name TEXT NOT NULL,
+    favorite_character TEXT NOT NULL,
+    year TEXT NOT NULL
+)
