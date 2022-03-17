@@ -43,8 +43,8 @@ describe('hand-of-resources routes', () => {
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    const expected = await Songs.getSongById(1);
+    // const expected = await Songs.getSongById(1);
     const res = await request(app).get(`/api/v1/songs/${song.id}`);
-    expect(res.body).toEqual({ ...expected });
+    expect(res.body).toEqual(song);
   });
 });
