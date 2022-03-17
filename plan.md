@@ -17,7 +17,7 @@
 - [ ] songs
   - [x] CREATE
   - [x] GET ALL
-  - [ ] GET BY ID
+  - [x] GET BY ID
   - [ ] UPDATE BY ID
   - [ ] DELETE BY ID
 - [ ] animes
