@@ -55,12 +55,9 @@ describe('hand-of-resources routes', () => {
       favorite_character: 'Sasuke',
       year: '2002',
     });
-    const expected = await {
-      id: '1',
-      name: 'Naruto',
+    const expected = await Animes.updateAnimeById(1, {
       favorite_character: 'Naruto',
-      year: '2002',
-    };
+    });
     const res = await request(app)
       .patch('/api/v1/animes/1')
       .send({ favorite_character: 'Naruto' });
