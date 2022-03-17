@@ -16,7 +16,7 @@
 
 - [ ] songs
   - [x] CREATE
-  - [ ] GET ALL
+  - [x] GET ALL
   - [ ] GET BY ID
   - [ ] UPDATE BY ID
   - [ ] DELETE BY ID

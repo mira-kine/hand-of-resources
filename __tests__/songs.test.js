@@ -3,6 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const { createSong } = require('../lib/models/Songs');
+const Songs = require('../lib/models/Songs');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -35,5 +36,15 @@ describe('hand-of-resources routes', () => {
         artist: 'Britney Spears',
       },
     ]);
+  });
+
+  it('should get song by id', async () => {
+    const song = await createSong({
+      name: 'Eventually',
+      artist: 'Tame Impala',
+    });
+    const expected = await Songs.getSongById(1);
+    const res = await request(app).get(`/api/v1/songs/${song.id}`);
+    expect(res.body).toEqual({ ...expected });
   });
 });
