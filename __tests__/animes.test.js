@@ -55,7 +55,8 @@ describe('hand-of-resources routes', () => {
       favorite_character: 'Sasuke',
       year: '2002',
     });
-    const expected = await Animes.updateAnimeById(1, {
+    const expected = await Animes.updateAnimeById({
+      id: expect.any(String),
       favorite_character: 'Naruto',
     });
     const res = await request(app)

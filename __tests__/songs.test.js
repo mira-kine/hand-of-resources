@@ -37,13 +37,13 @@ describe('hand-of-resources routes', () => {
   });
 
   it('should update song by id', async () => {
-    await Songs.createSong({
+    const song = await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',
     });
     const expected = await Songs.updateSongbyId(1, { name: 'Borderline' });
     const res = await request(app)
-      .patch('/api/v1/songs/1')
+      .patch(`/api/v1/songs/${song.id}`)
       .send({ name: 'Borderline' });
     expect(res.body).toEqual({ ...expected });
   });
