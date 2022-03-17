@@ -52,14 +52,10 @@ describe('hand-of-resources routes', () => {
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    const expected = await {
-      id: expect.any(String),
-      name: 'Borderline',
-      artist: 'Tame Impala',
-    };
+    const expected = await Songs.updateSongbyId(1, { name: 'Borderline' });
     const res = await request(app)
       .patch('/api/v1/songs/1')
       .send({ name: 'Borderline' });
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ ...expected });
   });
 });
