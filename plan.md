@@ -6,7 +6,7 @@
 
 ## controllers
 
-- [ ] songs
+- [x] songs
 - [ ] animes
 - [ ] books
 - [ ] mookies
@@ -15,10 +15,11 @@
 ## models
 
 - [ ] songs
-  - [ ] CREATE
-  - [ ] READ
-  - [ ] UPDATE
-  - [ ] DELETE
+  - [x] CREATE
+  - [ ] GET ALL
+  - [ ] GET BY ID
+  - [ ] UPDATE BY ID
+  - [ ] DELETE BY ID
 - [ ] animes
 - [ ] books
 - [ ] mookies
