@@ -49,8 +49,8 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it.only('should update anime by id', async () => {
-    Animes.createAnime({
+  it('should update anime by id', async () => {
+    await Animes.createAnime({
       name: 'Naruto',
       favorite_character: 'Sasuke',
       year: '2002',
@@ -62,5 +62,16 @@ describe('hand-of-resources routes', () => {
       .patch('/api/v1/animes/1')
       .send({ favorite_character: 'Naruto' });
     expect(res.body).toEqual({ ...expected });
+  });
+
+  it.only('should delete anime by id', async () => {
+    const anime = await Animes.createAnime({
+      name: 'Naruto',
+      favorite_character: 'Sasuke',
+      year: '2002',
+    });
+    const res = await request(app).delete(`/api/v1/animes/${anime.id}`);
+    expect(res.body).toEqual(anime);
+    expect(await Animes.getAnimeById(anime.id)).toBeNull();
   });
 });

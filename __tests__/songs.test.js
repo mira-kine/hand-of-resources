@@ -53,7 +53,6 @@ describe('hand-of-resources routes', () => {
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    console.log('song', song);
     const res = await request(app).delete(`/api/v1/songs/${song.id}`);
     expect(res.body).toEqual(song);
 
