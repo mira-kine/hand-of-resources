@@ -49,13 +49,14 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it('should update anime by id', async () => {
+  it.only('should update anime by id', async () => {
     Animes.createAnime({
       name: 'Naruto',
       favorite_character: 'Sasuke',
       year: '2002',
     });
     const expected = await {
+      id: '1',
       name: 'Naruto',
       favorite_character: 'Naruto',
       year: '2002',
