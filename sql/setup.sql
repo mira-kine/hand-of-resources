@@ -15,5 +15,5 @@ CREATE TABLE animes (
     id BIGINT GENERATED ALWAYS AS IDENTITY,
     name TEXT NOT NULL,
     favorite_character TEXT NOT NULL,
-    year TEXT NOT NULL
+    year BIGINT NOT NULL
 )
