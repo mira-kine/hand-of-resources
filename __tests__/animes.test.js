@@ -23,7 +23,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
-  it.only('should get all the anime', async () => {
+  it('should get all the anime', async () => {
     const anime1 = await Animes.createAnime({
       name: 'Naruto',
       favorite_character: 'Sasuke',
@@ -36,5 +36,21 @@ describe('hand-of-resources routes', () => {
     });
     const res = await request(app).get('/api/v1/animes');
     expect(res.body).toEqual(expect.arrayContaining([anime1, anime2]));
+  });
+
+  it('should get anime by id', async () => {
+    const anime = await Animes.createAnime({
+      name: 'Naruto',
+      favorite_character: 'Sasuke',
+      year: '2002',
+    });
+    const expected = await {
+      id: '1',
+      name: 'Naruto',
+      favorite_character: 'Sasuke',
+      year: '2002',
+    };
+    const res = await request(app).get(`/api/v1/animes/${anime.id}`);
+    expect(res.body).toEqual({ ...expected });
   });
 });
