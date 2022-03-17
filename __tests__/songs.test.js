@@ -2,7 +2,6 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const { createSong } = require('../lib/models/Songs');
 const Songs = require('../lib/models/Songs');
 
 describe('hand-of-resources routes', () => {
@@ -15,11 +14,11 @@ describe('hand-of-resources routes', () => {
   });
 
   it('should get all songs', async () => {
-    await createSong({
+    await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    await createSong({
+    await Songs.createSong({
       name: 'Lucky',
       artist: 'Britney Spears',
     });
@@ -39,12 +38,12 @@ describe('hand-of-resources routes', () => {
   });
 
   it('should get song by id', async () => {
-    const song = await createSong({
+    const song = await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    // const expected = await Songs.getSongById(1);
+    const expected = await Songs.getSongById(1);
     const res = await request(app).get(`/api/v1/songs/${song.id}`);
-    expect(res.body).toEqual(song);
+    expect(res.body).toEqual({ ...expected });
   });
 });
