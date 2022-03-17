@@ -44,12 +44,7 @@ describe('hand-of-resources routes', () => {
       favorite_character: 'Sasuke',
       year: '2002',
     });
-    const expected = await {
-      id: '1',
-      name: 'Naruto',
-      favorite_character: 'Sasuke',
-      year: '2002',
-    };
+    const expected = await Animes.getAnimeById(anime.id);
     const res = await request(app).get(`/api/v1/animes/${anime.id}`);
     expect(res.body).toEqual({ ...expected });
   });
