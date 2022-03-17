@@ -58,4 +58,13 @@ describe('hand-of-resources routes', () => {
       .send({ name: 'Borderline' });
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('should delete song by id', async () => {
+    const song = await Songs.createSong({
+      name: 'Eventually',
+      artist: 'Tame Impala',
+    });
+    const res = await request(app).delete(`/api/v1/deepsea/${song.id}`);
+    expect(res.body).toEqual(song);
+  });
 });
