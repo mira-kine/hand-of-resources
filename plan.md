@@ -14,12 +14,12 @@
 
 ## models
 
-- [ ] songs
+- [x] songs
   - [x] CREATE
   - [x] GET ALL
   - [x] GET BY ID
-  - [ ] UPDATE BY ID
-  - [ ] DELETE BY ID
+  - [x] UPDATE BY ID
+  - [x] DELETE BY ID
 - [ ] animes
 - [ ] books
 - [ ] mookies

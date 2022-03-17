@@ -14,27 +14,16 @@ describe('hand-of-resources routes', () => {
   });
 
   it('should get all songs', async () => {
-    await Songs.createSong({
+    const song1 = await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    await Songs.createSong({
+    const song2 = await Songs.createSong({
       name: 'Lucky',
       artist: 'Britney Spears',
     });
     const res = await request(app).get('/api/v1/songs');
-    expect(res.body).toEqual([
-      {
-        id: expect.any(String),
-        name: 'Eventually',
-        artist: 'Tame Impala',
-      },
-      {
-        id: expect.any(String),
-        name: 'Lucky',
-        artist: 'Britney Spears',
-      },
-    ]);
+    expect(res.body).toEqual(expect.arrayContaining([song1, song2]));
   });
 
   it('should get song by id', async () => {
@@ -59,12 +48,15 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it('should delete song by id', async () => {
+  it.only('should delete song by id', async () => {
     const song = await Songs.createSong({
       name: 'Eventually',
       artist: 'Tame Impala',
     });
-    const res = await request(app).delete(`/api/v1/deepsea/${song.id}`);
-    expect(res.body).toBeNull();
+    console.log('song', song);
+    const res = await request(app).delete(`/api/v1/songs/${song.id}`);
+    expect(res.body).toEqual(song);
+
+    expect(await Songs.getSongById(song.id)).toBeNull();
   });
 });
