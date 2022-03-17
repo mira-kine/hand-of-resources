@@ -48,4 +48,21 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get(`/api/v1/animes/${anime.id}`);
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('should update anime by id', async () => {
+    Animes.createAnime({
+      name: 'Naruto',
+      favorite_character: 'Sasuke',
+      year: '2002',
+    });
+    const expected = await {
+      name: 'Naruto',
+      favorite_character: 'Naruto',
+      year: '2002',
+    };
+    const res = await request(app)
+      .patch('/api/v1/animes/1')
+      .send({ favorite_character: 'Naruto' });
+    expect(res.body).toEqual({ ...expected });
+  });
 });
