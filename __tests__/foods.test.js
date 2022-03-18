@@ -55,12 +55,8 @@ describe('hand-of-resources routes', () => {
       name: 'Katsu curry',
       cost: '500 yen',
     });
-    const expected = {
-      id: '1',
-      name: 'Katsu curry',
-      cost: '500 yen',
-    };
     const res = await request(app).delete(`/api/v1/foods/${food.id}`);
-    expect(res.body).toEqual({ ...expected });
+    expect(res.body).toEqual(food);
+    expect(await Foods.getFoodById(food.id)).toBeNull();
   });
 });
