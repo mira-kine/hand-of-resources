@@ -12,7 +12,7 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
-  it('creates a food', async () => {
+  it.only('creates a food', async () => {
     const expected = {
       name: 'Katsu curry',
       cost: '500 yen',
