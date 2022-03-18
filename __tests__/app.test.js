@@ -11,4 +11,13 @@ describe('hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it('should create a song', async () => {
+    const expected = {
+      name: 'Eventually',
+      artist: 'Tame Impala',
+    };
+    const res = await request(app).post('/api/v1/songs').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
