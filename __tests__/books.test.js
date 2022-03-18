@@ -37,4 +37,20 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get(`/api/v1/books/${book.id}`);
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates book by id', async () => {
+    await Books.createBook({
+      name: 'Crying in H Mart',
+      author: 'Michelle Zauner',
+    });
+    const expected = {
+      id: expect.any(String),
+      name: 'Crying',
+      author: 'Michelle Zauner',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/books/1`)
+      .send({ name: 'Crying' });
+    expect(res.body).toEqual({ ...expected });
+  });
 });
