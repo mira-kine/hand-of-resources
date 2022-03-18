@@ -22,9 +22,23 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
-  it.only('gets all books', async () => {
+  it('gets all books', async () => {
     const expected = await Books.getAllBooks();
     const res = await request(app).get('/api/v1/books');
     expect(res.body).toEqual(expected);
+  });
+
+  it('gets book by id', async () => {
+    await Books.createBook({
+      name: 'Crying in H Mart',
+      author: 'Michelle Zauner',
+    });
+    const expected = {
+      id: expect.any(String),
+      name: 'Crying in H Mart',
+      author: 'Michelle Zauner',
+    };
+    const res = await request(app).get('/api/v1/books/1');
+    expect(res.body).toEqual({ ...expected });
   });
 });
