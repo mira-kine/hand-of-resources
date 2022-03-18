@@ -20,19 +20,29 @@
   - [x] GET BY ID
   - [x] UPDATE BY ID
   - [x] DELETE BY ID
-- [ ] animes
-  - [ ] CREATE
-  - [ ] GET ALL
-  - [ ] GET BY ID
-  - [ ] UPDATE BY ID
-  - [ ] DELETE BY ID
-- [ ] books
+- [x] animes
+  - [x] CREATE
+  - [x] GET ALL
+  - [x] GET BY ID
+  - [x] UPDATE BY ID
+  - [x] DELETE BY ID
+- [x] books
   - [ ] CREATE
   - [ ] GET ALL
   - [ ] GET BY ID
   - [ ] UPDATE BY ID
   - [ ] DELETE BY ID
 - [ ] mookies
+  - [ ] CREATE
+  - [ ] GET ALL
+  - [ ] GET BY ID
+  - [ ] UPDATE BY ID
+  - [ ] DELETE BY ID
 - [ ] japanese foods
+  - [ ] CREATE
+  - [ ] GET ALL
+  - [ ] GET BY ID
+  - [ ] UPDATE BY ID
+  - [ ] DELETE BY ID
 
 ## tests

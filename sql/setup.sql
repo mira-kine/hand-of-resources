@@ -16,4 +16,5 @@ CREATE TABLE animes (
     name TEXT NOT NULL,
     favorite_character TEXT NOT NULL,
     year BIGINT NOT NULL
-)
+);
+
