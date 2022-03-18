@@ -55,8 +55,7 @@ describe('hand-of-resources routes', () => {
       favorite_character: 'Sasuke',
       year: '2002',
     });
-    const expected = await Animes.updateAnimeById({
-      id: expect.any(String),
+    const expected = await Animes.updateAnimeById(1, {
       favorite_character: 'Naruto',
     });
     const res = await request(app)
@@ -65,7 +64,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it.only('should delete anime by id', async () => {
+  it('should delete anime by id', async () => {
     const anime = await Animes.createAnime({
       name: 'Naruto',
       favorite_character: 'Sasuke',

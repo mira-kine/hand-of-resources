@@ -12,12 +12,12 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
-  it('should create book', async () => {
+  it.only('should create book', async () => {
     const expected = {
       name: 'Crying in H Mart',
       author: 'Michelle Zauner',
     };
-    const res = await request(app).post('/app/v1/books').send(expected);
+    const res = await request(app).post('/api/v1/books').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 });
