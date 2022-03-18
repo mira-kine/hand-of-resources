@@ -43,11 +43,7 @@ describe('hand-of-resources routes', () => {
       name: 'Crying in H Mart',
       author: 'Michelle Zauner',
     });
-    const expected = {
-      id: expect.any(String),
-      name: 'Crying',
-      author: 'Michelle Zauner',
-    };
+    const expected = await Books.updateBookById(1, { name: 'Crying' });
     const res = await request(app)
       .patch(`/api/v1/books/1`)
       .send({ name: 'Crying' });
