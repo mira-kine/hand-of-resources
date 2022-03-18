@@ -28,7 +28,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it.only('gets food by id', async () => {
+  it('gets food by id', async () => {
     const food = await Foods.createFood({
       name: 'Katsu curry',
       cost: '500 yen',
@@ -36,5 +36,21 @@ describe('hand-of-resources routes', () => {
     const expected = await Foods.getFoodById(food.id);
     const res = await request(app).get(`/api/v1/foods/${food.id}`);
     expect(res.body).toEqual(expected);
+  });
+
+  it.only('updates food by id', async () => {
+    const food = await Foods.createFood({
+      name: 'Katsu curry',
+      cost: '500 yen',
+    });
+    const expected = {
+      id: '1',
+      name: 'Katsu curry',
+      cost: '200 yen',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/foods/${food.id}`)
+      .send({ cost: '200yen' });
+    expect(res.body).toEqual({ ...expected });
   });
 });
