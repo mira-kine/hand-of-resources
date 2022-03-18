@@ -29,16 +29,12 @@ describe('hand-of-resources routes', () => {
   });
 
   it('gets book by id', async () => {
-    await Books.createBook({
+    const book = await Books.createBook({
       name: 'Crying in H Mart',
       author: 'Michelle Zauner',
     });
-    const expected = {
-      id: expect.any(String),
-      name: 'Crying in H Mart',
-      author: 'Michelle Zauner',
-    };
-    const res = await request(app).get('/api/v1/books/1');
+    const expected = await Books.getBookById(book.id);
+    const res = await request(app).get(`/api/v1/books/${book.id}`);
     expect(res.body).toEqual({ ...expected });
   });
 });
