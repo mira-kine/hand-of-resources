@@ -34,10 +34,10 @@
   - [x] DELETE BY ID
 - [x] mookies
   - [x] CREATE
-  - [ ] GET ALL
-  - [ ] GET BY ID
-  - [ ] UPDATE BY ID
-  - [ ] DELETE BY ID
+  - [x] GET ALL
+  - [x] GET BY ID
+  - [x] UPDATE BY ID
+  - [x] DELETE BY ID
 - [ ] japanese foods
   - [ ] CREATE
   - [ ] GET ALL
