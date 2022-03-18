@@ -33,7 +33,7 @@
   - [x] UPDATE BY ID
   - [x] DELETE BY ID
 - [x] mookies
-  - [ ] CREATE
+  - [x] CREATE
   - [ ] GET ALL
   - [ ] GET BY ID
   - [ ] UPDATE BY ID
