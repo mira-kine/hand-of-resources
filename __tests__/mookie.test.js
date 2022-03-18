@@ -13,12 +13,25 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
-  it.only('creates an instance of mookie', async () => {
+  it('creates an instance of mookie', async () => {
     const expected = {
       fav_toy: 'Octopus',
       num_treats: 2,
     };
     const res = await request(app).post('/api/v1/mookie').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
+
+  it('gets all mookie objects', async () => {
+    const mookie1 = await Mookie.createMookie({
+      fav_toy: 'Octopus',
+      num_treats: 2,
+    });
+    const mookie2 = await Mookie.createMookie({
+      fav_toy: 'Bone',
+      num_treats: 5,
+    });
+    const res = await request(app).get('/api/v1/mookie');
+    expect(res.body).toEqual(expect.arrayContaining([mookie1, mookie2]));
   });
 });
