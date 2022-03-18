@@ -23,15 +23,8 @@ describe('hand-of-resources routes', () => {
   });
 
   it('gets all mookie objects', async () => {
-    const mookie1 = await Mookie.createMookie({
-      fav_toy: 'Octopus',
-      num_treats: 2,
-    });
-    const mookie2 = await Mookie.createMookie({
-      fav_toy: 'Bone',
-      num_treats: 5,
-    });
+    const expected = await Mookie.getAllMookie();
     const res = await request(app).get('/api/v1/mookie');
-    expect(res.body).toEqual(expect.arrayContaining([mookie1, mookie2]));
+    expect(res.body).toEqual(expected);
   });
 });
