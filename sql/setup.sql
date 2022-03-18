@@ -32,4 +32,4 @@ CREATE TABLE mookie (
     id BIGINT GENERATED ALWAYS AS IDENTITY,
     fav_toy TEXT NOT NULL,
     num_treats INT NOT NULL
-)
+);

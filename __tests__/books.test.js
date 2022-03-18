@@ -38,7 +38,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it.only('updates book by id', async () => {
+  it('updates book by id', async () => {
     await Books.createBook({
       name: 'Crying in H Mart',
       author: 'Michelle Zauner',

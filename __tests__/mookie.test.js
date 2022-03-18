@@ -11,4 +11,13 @@ describe('hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it.only('creates an instance of mookie', async () => {
+    const expected = {
+      fav_toy: 'Octopus',
+      num_treats: 2,
+    };
+    const res = await request(app).post('/api/v1/mookie').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
