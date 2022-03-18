@@ -33,11 +33,7 @@ describe('hand-of-resources routes', () => {
       name: 'Katsu curry',
       cost: '500 yen',
     });
-    const expected = {
-      id: expect.any(String),
-      name: 'Katsu curry',
-      cost: '500 yen',
-    };
+    const expected = await Foods.getFoodById(food.id);
     const res = await request(app).get(`/api/v1/foods/${food.id}`);
     expect(res.body).toEqual(expected);
   });
