@@ -38,19 +38,15 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it.only('updates food by id', async () => {
+  it('updates food by id', async () => {
     const food = await Foods.createFood({
       name: 'Katsu curry',
       cost: '500 yen',
     });
-    const expected = {
-      id: '1',
-      name: 'Katsu curry',
-      cost: '200 yen',
-    };
+    const expected = await Foods.updateFoodById(1, { cost: '200 yen' });
     const res = await request(app)
       .patch(`/api/v1/foods/${food.id}`)
-      .send({ cost: '200yen' });
+      .send({ cost: '200 yen' });
     expect(res.body).toEqual({ ...expected });
   });
 });
