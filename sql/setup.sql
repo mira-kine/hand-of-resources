@@ -33,3 +33,11 @@ CREATE TABLE mookie (
     fav_toy TEXT NOT NULL,
     num_treats INT NOT NULL
 );
+
+DROP TABLE IF EXISTS foods;
+
+CREATE TABLE foods (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    cost TEXT NOT NULL
+);
