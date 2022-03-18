@@ -27,12 +27,12 @@
   - [x] UPDATE BY ID
   - [x] DELETE BY ID
 - [x] books
-  - [ ] CREATE
-  - [ ] GET ALL
-  - [ ] GET BY ID
-  - [ ] UPDATE BY ID
-  - [ ] DELETE BY ID
-- [ ] mookies
+  - [x] CREATE
+  - [x] GET ALL
+  - [x] GET BY ID
+  - [x] UPDATE BY ID
+  - [x] DELETE BY ID
+- [x] mookies
   - [ ] CREATE
   - [ ] GET ALL
   - [ ] GET BY ID
