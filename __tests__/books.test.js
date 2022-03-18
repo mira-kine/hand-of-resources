@@ -49,4 +49,14 @@ describe('hand-of-resources routes', () => {
       .send({ name: 'Crying' });
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('delete book by id', async () => {
+    const book = await Books.createBook({
+      name: 'Crying in H Mart',
+      author: 'Michelle Zauner',
+    });
+    const res = await request(app).delete(`/api/v1/books/${book.id}`);
+    expect(res.body).toEqual(book);
+    expect(await Books.getBookById(book.id)).toBeNull();
+  });
 });

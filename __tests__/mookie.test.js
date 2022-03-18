@@ -3,6 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Mookie = require('../lib/models/Mookie');
+const { getMookieById } = require('../lib/models/Mookie');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -38,7 +39,7 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
-  it.only('updates mookie by id', async () => {
+  it('updates mookie by id', async () => {
     const mookie = await Mookie.createMookie({
       fav_toy: 'Octopus',
       num_treats: 2,
@@ -50,5 +51,15 @@ describe('hand-of-resources routes', () => {
       .patch(`/api/v1/mookie/${mookie.id}`)
       .send({ num_treats: 5 });
     expect(res.body).toEqual({ ...expected });
+  });
+
+  it.only('delete mookie by id', async () => {
+    const mookie = await Mookie.createMookie({
+      fav_toy: 'Octopus',
+      num_treats: 2,
+    });
+    const res = await request(app).delete(`/api/v1/mookie/${mookie.id}`);
+    expect(res.body).toEqual(mookie);
+    expect(await getMookieById(mookie.id)).toBeNull();
   });
 });
