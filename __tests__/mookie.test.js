@@ -27,4 +27,18 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get('/api/v1/mookie');
     expect(res.body).toEqual(expected);
   });
+
+  it.only('gets mookie by id', async () => {
+    await Mookie.createMookie({
+      fav_toy: 'Octopus',
+      num_treats: 2,
+    });
+    const expected = {
+      id: expect.any(String),
+      fav_toy: 'Octopus',
+      num_treats: 2,
+    };
+    const res = await request(app).get(`/api/v1/mookie/1`);
+    expect(res.body).toEqual({ ...expected });
+  });
 });
