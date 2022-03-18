@@ -23,15 +23,8 @@ describe('hand-of-resources routes', () => {
   });
 
   it.only('gets all books', async () => {
-    const book1 = await Books.createBook({
-      name: 'Crying in H Mart',
-      author: 'Michelle Zauner',
-    });
-    const book2 = await Books.createBook({
-      name: 'Six of Crows',
-      author: 'Leigh Bardugo',
-    });
+    const expected = await Books.getAllBooks();
     const res = await request(app).get('/api/v1/books');
-    expect(res.body).toEqual(expect.arrayContaining([book1, book2]));
+    expect(res.body).toEqual(expected);
   });
 });
