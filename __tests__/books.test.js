@@ -39,13 +39,13 @@ describe('hand-of-resources routes', () => {
   });
 
   it('updates book by id', async () => {
-    await Books.createBook({
+    const book = await Books.createBook({
       name: 'Crying in H Mart',
       author: 'Michelle Zauner',
     });
     const expected = await Books.updateBookById(1, { name: 'Crying' });
     const res = await request(app)
-      .patch(`/api/v1/books/1`)
+      .patch(`/api/v1/books/${book.id}`)
       .send({ name: 'Crying' });
     expect(res.body).toEqual({ ...expected });
   });
