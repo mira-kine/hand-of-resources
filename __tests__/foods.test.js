@@ -49,4 +49,18 @@ describe('hand-of-resources routes', () => {
       .send({ cost: '200 yen' });
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('deletes food by id', async () => {
+    const food = await Foods.createFood({
+      name: 'Katsu curry',
+      cost: '500 yen',
+    });
+    const expected = {
+      id: '1',
+      name: 'Katsu curry',
+      cost: '500 yen',
+    };
+    const res = await request(app).delete(`/api/v1/foods/${food.id}`);
+    expect(res.body).toEqual({ ...expected });
+  });
 });
