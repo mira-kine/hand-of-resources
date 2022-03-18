@@ -18,3 +18,10 @@ CREATE TABLE animes (
     year BIGINT NOT NULL
 );
 
+DROP TABLE IF EXISTS books;
+
+CREATE TABLE books (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name TEXT NOT NULL,
+    author TEXT NOT NULL
+);
