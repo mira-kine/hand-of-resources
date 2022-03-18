@@ -22,9 +22,23 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
-  it.only('gets all foods', async () => {
+  it('gets all foods', async () => {
     const expected = await Foods.getAllFood();
     const res = await request(app).get(`/api/v1/foods`);
+    expect(res.body).toEqual(expected);
+  });
+
+  it.only('gets food by id', async () => {
+    const food = await Foods.createFood({
+      name: 'Katsu curry',
+      cost: '500 yen',
+    });
+    const expected = {
+      id: expect.any(String),
+      name: 'Katsu curry',
+      cost: '500 yen',
+    };
+    const res = await request(app).get(`/api/v1/foods/${food.id}`);
     expect(res.body).toEqual(expected);
   });
 });
